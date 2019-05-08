@@ -1,3 +1,4 @@
+#Create graph of solid state concentration of A while varying L
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -40,7 +41,7 @@ while i <len(A):
 plt.plot(L,A)
 plt.title("3 Variable Steady States")
 plt.xlabel('L Concentration (\u03bcM)')
-plt.ylabel('A Steady State Concentration (\u03bcM)')
+plt.ylabel('A Steady State Concentration log(\u03bcM)')
 plt.axvline(x=39, color='k', linestyle='--')
 plt.axvline(x=55.5, color='k', linestyle='--')
 plt.show()

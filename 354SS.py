@@ -1,7 +1,9 @@
+#Solve for the fixed points with varied L concentration
 import numpy as np
 import matplotlib.pyplot as plt
 import math
 
+#define parameters
 mu = 3.03*(10**(-2))
 n = 2.0
 tauM = 0.1
@@ -23,15 +25,16 @@ gamB1 = 8.33*(10**(-4))
 gamM = gamM1+mu
 gamA = gamA1+mu
 gamB = gamB1+mu
-
 tauB=2
 
+#initiate arrays to hold values
 A = np.arange(0., 40., 1.)
 LHS=np.zeros(len(A))
 RHS=np.zeros(len(A))
 RHS2=np.zeros(len(A))
 RHS3=np.zeros(len(A))
 
+#Solve LHS, RHS(s)
 i=0
 while i < len(A):
     LHS[i] = (1+K1*(math.exp(-mu*tauM)*A[i])**n)/(K+K1*(math.exp(-mu*tauM)*A[i])**n)
@@ -46,12 +49,12 @@ while i < len(A):
     RHS3[i] = X * A[i] / (h3 - (betaA * g / alphaA))
     i=i+1
 
-
+#Ploy
 plt.plot(A,LHS,linestyle='--',label='LHS')
 plt.plot(A,RHS,label='L=50 (\u03bcM)')
 plt.plot(A,RHS2,label='L=45 (\u03bcM)')
 plt.plot(A,RHS3,label='L=40 (\u03bcM)')
-plt.title("3 Variable Steady States")
+plt.title("Steady State Values")
 plt.xlabel('A Concentration (\u03bcM)')
 plt.legend(loc='upper left')
 plt.show()
